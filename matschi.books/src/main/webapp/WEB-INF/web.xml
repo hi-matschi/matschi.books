@@ -14,8 +14,12 @@
   
   <servlet-mapping>
   	<servlet-name>Book</servlet-name>
-  	<url-pattern>/list</url-pattern>
-  	<url-pattern>/add</url-pattern>
+  	<url-pattern>/list/book</url-pattern>
+  	<url-pattern>/add/book</url-pattern>
+  	<url-pattern>/list/author</url-pattern>
+  	<url-pattern>/add/author</url-pattern>
+  	<url-pattern>/list/user</url-pattern>
+  	<url-pattern>/add/user</url-pattern>
   </servlet-mapping>
   
 </web-app>
