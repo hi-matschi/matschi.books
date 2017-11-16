@@ -10,7 +10,7 @@ package fr.afpa.matschi.book.model;
  */
 public class Book {
 	private int id;
-	private int isbn;
+	private String isbn;
 	private String title;
 	private String subtitle;
 	private String img;
@@ -19,7 +19,7 @@ public class Book {
 		
 	}
 	
-	public Book(int id, int isbn, String title, String subtitle, String img) {
+	public Book(int id, String isbn, String title, String subtitle, String img) {
 		this.id = id;
 		this.isbn = isbn;
 		this.title = title;
@@ -35,11 +35,11 @@ public class Book {
 		this.id = id;
 	}
 	
-	public int getIsbn() {
+	public String getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(int isbn) {
+	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
 

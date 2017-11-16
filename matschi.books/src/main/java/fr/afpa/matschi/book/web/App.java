@@ -18,10 +18,6 @@ public class App extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private IService service;
 	
-	public App() {
-		System.out.println("test construct");
-	}
-	
 	public void init() throws ServletException {
 		IDao dao = new Dao();
 		service = new Service(dao);
@@ -37,13 +33,13 @@ public class App extends HttpServlet {
 			if(path.equals("/add/book")) doAddBook(req, resp);
 			if(path.equals("/add/author")) doAddAuthor(req, resp);
 			if(path.equals("/add/user")) doAddUser(req, resp);
-			//if(path.equals("/addValidate")) doAddValidate(req, resp);
 		}
 	}
 	
 	private void doListBook(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// ArrayList<Album> albums = service.getAll();
-		//req.setAttribute("albums", albums);
+		ArrayList<Book> books = service.getAll();
+		req.setAttribute("books", books);
+		
 		getServletContext().getRequestDispatcher("/WEB-INF/views/book/list.jsp").forward(req, resp);
 	}
 	

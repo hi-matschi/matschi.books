@@ -22,7 +22,6 @@
 			<version>1.11.1</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/taglibs/standard -->
 		<dependency>
 			<groupId>taglibs</groupId>
 			<artifactId>standard</artifactId>
@@ -39,8 +38,6 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-
-
 	</dependencies>
 	<build>
 		<!-- Ajout du plugin pour créer un JAR exécutable -->

@@ -17,7 +17,7 @@
 	    <td>${book.id}</td>
 	    <td>${book.isbn}</td>
 	    <td>${book.title}</td>
-	    <td>${books.subtitle}</td>
+	    <td>${book.subtitle}</td>
 	    <td>${book.img}</td>
 	  </tr>
   </core:forEach>
