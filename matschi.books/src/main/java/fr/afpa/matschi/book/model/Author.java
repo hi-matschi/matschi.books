@@ -21,6 +21,11 @@ public class Author extends Model {
 		this.firstname = firstname;
 		this.lastname = lastname;
 	}
+	
+	public Author(String firstname, String lastname) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+	}
 
 	public int getId() {
 		return id;

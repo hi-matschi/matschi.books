@@ -28,6 +28,14 @@ public class Book extends Model {
 		this.img = img;
 		this.idAuthor = idAuthor;
 	}
+	
+	public Book(String isbn, String title, String subtitle, String img, int idAuthor) {
+		this.isbn = isbn;
+		this.title = title;
+		this.subtitle = subtitle;
+		this.img = img;
+		this.idAuthor = idAuthor;
+	}
 
 	public int getId() {
 		return id;
