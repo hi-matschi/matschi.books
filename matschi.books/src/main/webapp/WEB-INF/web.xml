@@ -9,17 +9,45 @@
   
   <servlet>
     <servlet-name>Book</servlet-name>
-    <servlet-class>fr.afpa.matschi.book.web.App</servlet-class>
+    <servlet-class>fr.afpa.matschi.book.web.AppBook</servlet-class>
   </servlet>
-  
   <servlet-mapping>
   	<servlet-name>Book</servlet-name>
-  	<url-pattern>/list/book</url-pattern>
-  	<url-pattern>/add/book</url-pattern>
-  	<url-pattern>/list/author</url-pattern>
-  	<url-pattern>/add/author</url-pattern>
-  	<url-pattern>/list/user</url-pattern>
-  	<url-pattern>/add/user</url-pattern>
+  	<url-pattern>/book/</url-pattern>
+  	<url-pattern>/book/list</url-pattern>
+  	<url-pattern>/book/add</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Author</servlet-name>
+    <servlet-class>fr.afpa.matschi.book.web.AppAuthor</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Author</servlet-name>
+  	<url-pattern>/author/</url-pattern>
+  	<url-pattern>/author/list</url-pattern>
+  	<url-pattern>/author/add</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>User</servlet-name>
+    <servlet-class>fr.afpa.matschi.book.web.AppUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>User</servlet-name>
+  	<url-pattern>/user</url-pattern>
+  	<url-pattern>/user/list</url-pattern>
+  	<url-pattern>/user/add</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Grade</servlet-name>
+    <servlet-class>fr.afpa.matschi.book.web.AppGrade</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Grade</servlet-name>
+  	<url-pattern>/grade/list</url-pattern>
+  	<url-pattern>/grade/add</url-pattern>
   </servlet-mapping>
   
 </web-app>

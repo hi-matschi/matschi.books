@@ -13,13 +13,22 @@
       <h2 class="subtitle">
         All admin actions
       </h2>
+      <p>Book</p>
       <ul>
-	     <li><a href="<core:url value='/list/book'/>">Display all books</a></li>
-	     <li><a href="<core:url value='/list/author'/>">Display all authors</a></li>
-	     <li><a href="<core:url value='/list/user'/>">Display all users</a></li>
-	     <li><a href="<core:url value='/add/book'/>">Add a new book</a></li>
-	     <li><a href="<core:url value='/add/author'/>">Add a new author</a></li>
-	     <li><a href="<core:url value='/add/user'/>">Add a new user</a></li>
+	     <li><a href="<core:url value='/book/list'/>">Display all books</a></li>
+	     <li><a href="<core:url value='/book/add'/>">Add a new book</a></li>
+	  </ul>
+	  <br>
+	  <p>Author</p>
+	  <ul>
+	     <li><a href="<core:url value='/author/list'/>">Display all authors</a></li>
+	     <li><a href="<core:url value='/author/add'/>">Add a new author</a></li>
+	  </ul>
+	  <br>
+	  <p>User</p>
+	  <ul>
+	     <li><a href="<core:url value='/user/list'/>">Display all users</a></li>
+	     <li><a href="<core:url value='/user/add'/>">Add a new user</a></li>
       </ul>
     </div>
   </div>

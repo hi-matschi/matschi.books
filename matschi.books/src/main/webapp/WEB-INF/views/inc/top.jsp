@@ -20,11 +20,11 @@
 
   <div class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item" href="<core:url value='/list/book'/>">
-        List
+      <a class="navbar-item" href="<core:url value='/book/list'/>">
+        List Book
       </a>
-      <a class="navbar-item" href="<core:url value='/add/book'/>">
-        Add
+      <a class="navbar-item" href="<core:url value='/book/add'/>">
+        Add Book
       </a>
     </div>
 

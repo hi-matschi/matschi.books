@@ -8,23 +8,25 @@ package fr.afpa.matschi.book.model;
  * - Getters/setters for all attributes
  *
  */
-public class Book {
+public class Book extends Model {
 	private int id;
 	private String isbn;
 	private String title;
 	private String subtitle;
 	private String img;
+	private int idAuthor;
 	
 	public Book() {
 		
 	}
 	
-	public Book(int id, String isbn, String title, String subtitle, String img) {
+	public Book(int id, String isbn, String title, String subtitle, String img, int idAuthor) {
 		this.id = id;
 		this.isbn = isbn;
 		this.title = title;
 		this.subtitle = subtitle;
 		this.img = img;
+		this.idAuthor = idAuthor;
 	}
 
 	public int getId() {
@@ -67,6 +69,12 @@ public class Book {
 		this.img = img;
 	}
 	
+	public int getIdAuthor() {
+		return idAuthor;
+	}
 	
+	public void setIdAuthor(int idAuthor) {
+		this.idAuthor = idAuthor;
+	}
 }
 
