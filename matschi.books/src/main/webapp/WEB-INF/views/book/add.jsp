@@ -11,14 +11,14 @@
 				<label class="label">ISBN</label>
 				<div class="control">
 					<input class="input" type="text" name="isbn"
-						placeholder="Number ISBN">
+						placeholder="Number ISBN" required>
 				</div>
 			</div>
 
 			<div class="field">
 				<label class="label">Title</label>
 				<div class="control">
-					<input class="input" type="text" name="title" placeholder="">
+					<input class="input" type="text" name="title" placeholder="" required>
 				</div>
 			</div>
 
@@ -32,7 +32,7 @@
 			<div class="field">
 				<label class="label">Img</label>
 				<div class="control">
-					<input class="input" type="text" name="img" placeholder="Url">
+					<input class="input" type="text" name="img" placeholder="Url" required>
 				</div>
 			</div>
 			
@@ -40,7 +40,7 @@
 			  <label class="label">Author</label>
 			  <div class="control">
 			    <div class="select">
-			      <select name="author">
+			      <select name="author" required>
 			      <core:forEach var="author" items="${authors}">
 			      	 <option value="${author.id}">${author.firstname} ${author.lastname}</option>
 				  </core:forEach>
@@ -54,7 +54,7 @@
 					<input class="button is-warning" type="submit" name="addBook" value="Submit">
 				</div>
 				<div class="control">
-					<a href="<core:url value='/'/>">
+					<a href="<core:url value='/book/'/>">
 						<button class="button">Cancel</button>
 					</a>
 				</div>

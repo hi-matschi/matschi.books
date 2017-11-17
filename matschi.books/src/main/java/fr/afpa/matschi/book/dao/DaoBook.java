@@ -146,8 +146,8 @@ public class DaoBook extends Dao implements IDaoBook {
 			connection = DriverManager.getConnection(url, login, password);
 			statement = connection.createStatement();
 			
-			String query = "REMOVE FROM book WHERE id_book = " + id;
-			
+			String query = "DELETE FROM book WHERE id_book = " + id + ";";
+			System.out.println(query);
 			statement.execute(query);
 			
 		} catch(SQLException e) {

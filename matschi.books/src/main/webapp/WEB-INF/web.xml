@@ -17,6 +17,7 @@
   	<url-pattern>/book/edit/*</url-pattern>
   	<url-pattern>/book/list</url-pattern>
   	<url-pattern>/book/add</url-pattern>
+  	<url-pattern>/book/remove/*</url-pattern>
   </servlet-mapping>
   
   <servlet>

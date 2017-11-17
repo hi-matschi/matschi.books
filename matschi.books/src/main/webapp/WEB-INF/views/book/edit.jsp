@@ -81,7 +81,7 @@
 					<input class="button is-warning" type="submit" name="editBook" value="Submit">
 				</div>
 				<div class="control">
-					<a href="<core:url value='/'/>">
+					<a href="<core:url value='/book/'/>">
 						<button class="button">Cancel</button>
 					</a>
 				</div>

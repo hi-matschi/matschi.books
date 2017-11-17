@@ -40,6 +40,7 @@ public class AppBook extends HttpServlet {
 		String info = req.getPathInfo();
 		if (path != null && info != null) {
 			if(path.equals("/" + name + "/edit")) doEdit(req,resp);
+			if(path.equals("/" + name + "/remove")) doRemove(req,resp);
 		}
 		if(path != null) {
 			if(path.equals("/" + name + "/")) doList(req, resp);
@@ -102,6 +103,13 @@ public class AppBook extends HttpServlet {
 		req.setAttribute("authors", authors);
 		
 		getServletContext().getRequestDispatcher("/WEB-INF/views/" + name + "/edit.jsp").forward(req, resp);
+	}
+	
+	private void doRemove(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int id = Integer.parseInt(req.getPathInfo().substring(1));
+		serviceBook.removeById(id);
+		
+		resp.sendRedirect("/matschi.books/book/");
 	}
 	
 }

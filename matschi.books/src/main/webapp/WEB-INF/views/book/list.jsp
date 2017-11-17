@@ -10,6 +10,7 @@
 		<th>ISBN</th>
 		<th>Title</th>
 		<th>Subtitle</th>
+		<th>Actions</th>
 	</tr>
 	<core:forEach var="book" items="${books}">
 		<tr>
@@ -24,6 +25,19 @@
 			<td>${book.isbn}</td>
 			<td>${book.title}</td>
 			<td>${book.subtitle}</td>
+			<td>
+				<a href="<core:url value='/book/edit/${book.id}'/>">
+					<span class="icon">
+					  <i class="fa fa-edit"></i>
+					</span>
+				</a>
+				<a href="<core:url value='/book/remove/${book.id}'/>">
+					<span class="icon">
+					  <i class="fa fa-trash"></i>
+					</span>
+				</a>
+			</td>
+			
 		</tr>
 	</core:forEach>
 
