@@ -133,7 +133,7 @@ public class DaoAuthor extends Dao implements IDaoAuthor {
 			connection = DriverManager.getConnection(url, login, password);
 			statement = connection.createStatement();
 			
-			String query = "REMOVE FROM author WHERE id_author = " + id;
+			String query = "DELETE FROM author WHERE id_author = " + id;
 			
 			statement.execute(query);
 			

@@ -147,7 +147,6 @@ public class DaoBook extends Dao implements IDaoBook {
 			statement = connection.createStatement();
 			
 			String query = "DELETE FROM book WHERE id_book = " + id + ";";
-			System.out.println(query);
 			statement.execute(query);
 			
 		} catch(SQLException e) {

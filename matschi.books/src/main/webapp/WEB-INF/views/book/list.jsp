@@ -6,10 +6,11 @@
 
 <table class="table">
 	<tr>
-		<th>Img path</th>
+		<th>Img</th>
 		<th>ISBN</th>
 		<th>Title</th>
 		<th>Subtitle</th>
+		<th>Author</th>
 		<th>Actions</th>
 	</tr>
 	<core:forEach var="book" items="${books}">
@@ -25,6 +26,11 @@
 			<td>${book.isbn}</td>
 			<td>${book.title}</td>
 			<td>${book.subtitle}</td>
+			<core:forEach var="author" items="${authors}">
+				<core:if test = "${book.idAuthor == author.id}">
+		          <td>${author.firstname} ${author.lastname}</td>
+		        </core:if>
+			</core:forEach>
 			<td>
 				<a href="<core:url value='/book/edit/${book.id}'/>">
 					<span class="icon">

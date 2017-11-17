@@ -26,6 +26,7 @@ public class AppBook extends HttpServlet {
 	private IServiceBook serviceBook;
 	private IServiceAuthor serviceAuthor;
 	private String name = "book";
+	private int idBook = 0;
 	
 	public void init() throws ServletException {
 		IDaoBook daoBook = new DaoBook();
@@ -38,11 +39,16 @@ public class AppBook extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String path = req.getServletPath();
 		String info = req.getPathInfo();
-		if (path != null && info != null) {
-			if(path.equals("/" + name + "/edit")) doEdit(req,resp);
-			if(path.equals("/" + name + "/remove")) doRemove(req,resp);
-		}
+		
+		//System.out.println(path);
+		
 		if(path != null) {
+			if (info != null) {
+				idBook = Integer.parseInt(req.getPathInfo().substring(1));
+				if(path.equals("/" + name + "/edit")) doEdit(req,resp);
+				if(path.equals("/" + name + "/remove")) doRemove(req,resp);
+				if(path.equals("/" + name)) doListById(req,resp);
+			}
 			if(path.equals("/" + name + "/")) doList(req, resp);
 			if(path.equals("/" + name + "/list")) doList(req, resp);
 			if(path.equals("/" + name + "/add")) doAdd(req, resp);
@@ -65,9 +71,9 @@ public class AppBook extends HttpServlet {
 		}
 		
 		if(req.getParameter("editBook") != null) {
-			int id = Integer.parseInt(req.getPathInfo().substring(1));
+			
 			Book book = new Book(
-					id,
+					idBook,
 					req.getParameter("isbn"),
 					req.getParameter("title"),
 					req.getParameter("subtitle"),
@@ -85,7 +91,19 @@ public class AppBook extends HttpServlet {
 	private void doList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ArrayList<Book> books = serviceBook.findAll();
 		req.setAttribute("books", books);
+		ArrayList<Author> authors = serviceAuthor.findAll();
+		req.setAttribute("authors", authors);
 		getServletContext().getRequestDispatcher("/WEB-INF/views/" + name + "/list.jsp").forward(req, resp);
+	}
+	
+	private void doListById(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Book book = serviceBook.findById(idBook);
+		req.setAttribute("book", book);
+		
+		ArrayList<Author> authors = serviceAuthor.findAll();
+		req.setAttribute("authors", authors);
+		
+		getServletContext().getRequestDispatcher("/WEB-INF/views/" + name + "/listById.jsp").forward(req, resp);
 	}
 	
 	private void doAdd(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -95,8 +113,7 @@ public class AppBook extends HttpServlet {
 	}
 	
 	private void doEdit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int id = Integer.parseInt(req.getPathInfo().substring(1));
-		Book book = serviceBook.findById(id);
+		Book book = serviceBook.findById(idBook);
 		req.setAttribute("book", book);
 		
 		ArrayList<Author> authors = serviceAuthor.findAll();
@@ -106,8 +123,7 @@ public class AppBook extends HttpServlet {
 	}
 	
 	private void doRemove(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int id = Integer.parseInt(req.getPathInfo().substring(1));
-		serviceBook.removeById(id);
+		serviceBook.removeById(idBook);
 		
 		resp.sendRedirect("/matschi.books/book/");
 	}

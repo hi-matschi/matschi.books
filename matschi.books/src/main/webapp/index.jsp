@@ -15,7 +15,7 @@
       </h2>
       <p>Book</p>
       <ul>
-	     <li><a href="<core:url value='/book/list'/>">Display all books</a></li>
+	     <li><a href="<core:url value='/book/'/>">Display all books</a></li>
 	     <li><a href="<core:url value='/book/add'/>">Add a new book</a></li>
 	  </ul>
 	  <br>
