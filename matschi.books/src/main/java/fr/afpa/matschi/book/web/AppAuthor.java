@@ -14,7 +14,7 @@ import fr.afpa.matschi.book.dao.IDaoAuthor;
 //import fr.afpa.matschi.book.dao.IDaoBook;
 //import fr.afpa.matschi.book.model.Book;
 import fr.afpa.matschi.book.model.Author;
-import fr.afpa.matschi.book.model.Book;
+// import fr.afpa.matschi.book.model.Book;
 import fr.afpa.matschi.book.service.IServiceAuthor;
 //import fr.afpa.matschi.book.service.IServiceBook;
 import fr.afpa.matschi.book.service.ServiceAuthor;
@@ -38,9 +38,12 @@ public class AppAuthor extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String path = req.getServletPath();
 		
+		//System.out.println(req.getPathInfo());
+		
 		if(path != null) {
 			if(path.equals("/" + name + "/list")) doList(req, resp);
 			if(path.equals("/" + name + "/add")) doAdd(req, resp);
+			// if(path.equals("/" + name + "/edit")) doEdit(req,resp);
 		}
 	}
 	
@@ -52,12 +55,15 @@ public class AppAuthor extends HttpServlet {
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		if(req.getParameter("addAuthor") != null) {
+
 			Author author = new Author(
 					req.getParameter("firstname"),
 					req.getParameter("lastname")
 				);
 			
 			serviceAuthor.create(author);
+
+			resp.sendRedirect("http://localhost:8080/matschi.books/author/list");
 		}
 	}
 	

@@ -17,7 +17,7 @@ public class ServiceAuthor implements IServiceAuthor {
 		return dao.findAll();
 	}
 	
-	public ArrayList<Author> findById(int id) {
+	public Author findById(int id) {
 		return dao.findById(id);
 	}
 	

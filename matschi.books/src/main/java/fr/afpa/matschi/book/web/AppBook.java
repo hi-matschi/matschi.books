@@ -37,8 +37,12 @@ public class AppBook extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String path = req.getServletPath();
-		
+		String info = req.getPathInfo();
+		if (path != null && info != null) {
+			if(path.equals("/" + name + "/edit")) doEdit(req,resp);
+		}
 		if(path != null) {
+			if(path.equals("/" + name + "/")) doList(req, resp);
 			if(path.equals("/" + name + "/list")) doList(req, resp);
 			if(path.equals("/" + name + "/add")) doAdd(req, resp);
 		}
@@ -55,6 +59,24 @@ public class AppBook extends HttpServlet {
 				);
 			
 			serviceBook.create(book);
+			
+			resp.sendRedirect("/matschi.books/book/");
+		}
+		
+		if(req.getParameter("editBook") != null) {
+			int id = Integer.parseInt(req.getPathInfo().substring(1));
+			Book book = new Book(
+					id,
+					req.getParameter("isbn"),
+					req.getParameter("title"),
+					req.getParameter("subtitle"),
+					req.getParameter("img"),
+					Integer.parseInt(req.getParameter("author"))
+				);
+			
+			serviceBook.update(book);
+			
+			resp.sendRedirect("/matschi.books/book/");
 		}
 		
 	}
@@ -69,6 +91,17 @@ public class AppBook extends HttpServlet {
 		ArrayList<Author> authors = serviceAuthor.findAll();
 		req.setAttribute("authors", authors);
 		getServletContext().getRequestDispatcher("/WEB-INF/views/" + name + "/add.jsp").forward(req, resp);
+	}
+	
+	private void doEdit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int id = Integer.parseInt(req.getPathInfo().substring(1));
+		Book book = serviceBook.findById(id);
+		req.setAttribute("book", book);
+		
+		ArrayList<Author> authors = serviceAuthor.findAll();
+		req.setAttribute("authors", authors);
+		
+		getServletContext().getRequestDispatcher("/WEB-INF/views/" + name + "/edit.jsp").forward(req, resp);
 	}
 	
 }

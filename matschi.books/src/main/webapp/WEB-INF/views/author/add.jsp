@@ -3,6 +3,7 @@
 	<jsp:param name="title" value="Matschi Books - Home" />
 	<jsp:param name="cssPath" value="./../css/" />
 </jsp:include>
+
 <form method="post" action="add">
 	<div class="hero">
 		<div class="hero-body">

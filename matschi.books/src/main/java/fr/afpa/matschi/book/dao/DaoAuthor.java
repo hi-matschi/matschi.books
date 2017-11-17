@@ -43,22 +43,21 @@ public class DaoAuthor extends Dao implements IDaoAuthor {
 		return authors;
 	}
 	
-	public ArrayList<Author> findById(int id) {
-		ArrayList<Author> authors = new ArrayList<Author>();
+	public Author findById(int id) {
+		Author author = null;
 		
 		try {
 			connection = DriverManager.getConnection(url, login, password);
 			statement = connection.createStatement();
-			String query = "SELECT * FROM author WHERE id = " + id + ";";
+			String query = "SELECT * FROM author WHERE id_author = " + id + ";";
 			result = statement.executeQuery(query);
 			
 			while(result.next()) {
-				Author author = new Author(
+				author = new Author(
 					result.getInt("id_author"),
 					result.getString("firstname"),
 					result.getString("lastname")
 				);
-				authors.add(author);
 			}
 			
 		} catch(SQLException e) {
@@ -73,7 +72,7 @@ public class DaoAuthor extends Dao implements IDaoAuthor {
 			}
 		}
 		
-		return authors;
+		return author;
 	}
 	
 	public void create(Author author) {
@@ -86,8 +85,10 @@ public class DaoAuthor extends Dao implements IDaoAuthor {
 					'"' + author.getLastname() + '"'
 			}, ",");
 			
-			String query = "INSERT INTO author (isbn, title, subtitle, img, id_author) "
+			String query = "INSERT INTO author (firstname, lastname) "
 							+ "VALUES (" + queryValues + ");";
+			
+			// System.out.println(query);
 			
 			statement.executeUpdate(query);
 			
@@ -108,7 +109,7 @@ public class DaoAuthor extends Dao implements IDaoAuthor {
 			connection = DriverManager.getConnection(url, login, password);
 			statement = connection.createStatement();
 			
-			String query = "UPDATE author"
+			String query = "UPDATE author "
 						+ "SET firstname = '" + author.getFirstname() + "', "
 						+ "lastname = '" + author.getLastname() +"', "
 						+ "WHERE id_author = " + author.getId();

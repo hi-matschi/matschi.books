@@ -17,7 +17,7 @@ public class ServiceBook implements IServiceBook {
 		return dao.findAll();
 	}
 	
-	public ArrayList<Book> findById(int id) {
+	public Book findById(int id) {
 		return dao.findById(id);
 	}
 	

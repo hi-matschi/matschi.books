@@ -17,7 +17,6 @@
 	    <td>${author.lastname}</td>
 	  </tr>
   </core:forEach>
-  
 </table>
 
 <jsp:include page="/WEB-INF/views/inc/bot.jsp"></jsp:include>

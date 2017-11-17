@@ -46,17 +46,19 @@ public class DaoBook extends Dao implements IDaoBook {
 		return books;
 	}
 	
-	public ArrayList<Book> findById(int id) {
-		ArrayList<Book> books = new ArrayList<Book>();
+	public Book findById(int id) {
+		Book book = null;
 		
 		try {
 			connection = DriverManager.getConnection(url, login, password);
 			statement = connection.createStatement();
-			String query = "SELECT * FROM book WHERE id = " + id + ";";
+			String query = "SELECT * FROM book WHERE id_book = " + id + ";";
 			result = statement.executeQuery(query);
 			
+			
+			
 			while(result.next()) {
-				Book book = new Book(
+				book = new Book(
 					result.getInt("id_book"),
 					result.getString("isbn"),
 					result.getString("title"),
@@ -64,7 +66,6 @@ public class DaoBook extends Dao implements IDaoBook {
 					result.getString("img"),
 					result.getInt("id_author")
 				);
-				books.add(book);
 			}
 			
 		} catch(SQLException e) {
@@ -79,7 +80,7 @@ public class DaoBook extends Dao implements IDaoBook {
 			}
 		}
 		
-		return books;
+		return book;
 	}
 	
 	public void create(Book book) {
@@ -117,13 +118,14 @@ public class DaoBook extends Dao implements IDaoBook {
 			connection = DriverManager.getConnection(url, login, password);
 			statement = connection.createStatement();
 			
-			String query = "UPDATE book"
+			String query = "UPDATE book "
 						+ "SET isbn = '" + book.getIsbn() + "', "
 						+ "title = '" + book.getTitle() +"', "
 						+ "subtitle = '" + book.getSubtitle() +"', "
 						+ "img = '" + book.getImg() + "', "
 						+ "id_author = " + book.getIdAuthor() + " "
-						+ "WHERE id_book = " + book.getId();
+						+ "WHERE id_book = " + book.getId() +";";
+			System.out.println(query);
 			
 			statement.executeUpdate(query);
 			
